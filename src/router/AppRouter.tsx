@@ -1,5 +1,5 @@
 import { createRoute,createRootRoute,createRouter,RouterProvider,Outlet,redirect } from "@tanstack/react-router";
-import { lazyRouteComponent } from "@tanstack/react-router";
+import { lazyRouteComponent,Navigate } from "@tanstack/react-router";
 // import LoginForm from "../components/login/LoginForm";
 // import RegisterForm from "../components/login/RegisterForm";
 // import AdminHome from "../pages/AdminHome";
@@ -35,21 +35,36 @@ const loginRoute = createRoute({
 const  indexRouter=createRoute({
     path:"/",
     getParentRoute:()=>rootRoute,
-    loader:()=>{
-        const id=sessionStorage.getItem("userID")
+    component:()=>{
+          const id=sessionStorage.getItem("userID")
         const user=sessionStorage.getItem("user")
         if(user==="employee" && id)
         {
-            throw redirect({to:`user-home/${id}`})
+        return <Navigate to={`/user-home/${id}`}/>
         }
         else 
         {
-            throw redirect({
-            to:"/login"
-        })
+        return <Navigate to="/login"/>
         }
-    },
-})
+    }
+    })
+        
+    
+    // loader:()=>{
+    //     const id=sessionStorage.getItem("userID")
+    //     const user=sessionStorage.getItem("user")
+    //     if(user==="employee" && id)
+    //     {
+    //         throw redirect({to:`user-home/${id}`})
+    //     }
+    //     else 
+    //     {
+    //         throw redirect({
+    //         to:"/login"
+    //     })
+    //     }
+    // },
+
 
 const registerRoute=createRoute({
     path:"/register",
