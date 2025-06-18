@@ -32,6 +32,25 @@ const loginRoute = createRoute({
   component: lazyRouteComponent(()=>import("../components/login/LoginForm")),
 })
 
+const  indexRouter=createRoute({
+    path:"/",
+    getParentRoute:()=>rootRoute,
+    loader:()=>{
+        const id=sessionStorage.getItem("userID")
+        const user=sessionStorage.getItem("user")
+        if(user==="employee" && id)
+        {
+            throw redirect({to:`user-home/${id}`})
+        }
+        else 
+        {
+            throw redirect({
+            to:"/login"
+        })
+        }
+    },
+})
+
 const registerRoute=createRoute({
     path:"/register",
     getParentRoute:()=>rootRoute,
@@ -60,6 +79,7 @@ const userHome=createRoute({
 })
 
 const routeTree=rootRoute.addChildren([
+    indexRouter,
     loginRoute,
     registerRoute,
     adminHome,
