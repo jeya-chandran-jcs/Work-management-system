@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import {  useEffect, useState } from 'react'
 import type { User } from '../types/data'
 
 export default function useFetch(url:string) {
@@ -6,7 +6,10 @@ export default function useFetch(url:string) {
  const [loading,setLoading]=useState<boolean>(false)
  const [error,setError]=useState<string>("")
  
- const getData=async()=>{
+ 
+
+ useEffect(()=>{
+    const getData=async()=>{
     try{
         setLoading(true)
         const response=await fetch(url)
@@ -17,14 +20,12 @@ export default function useFetch(url:string) {
     catch(err:unknown){
         if(err instanceof Error)
         {
-            setError(err?.message)
+            setError(err.message)
         }
         setLoading(false)
     }
- }
-
- useEffect(()=>{
-    getData()
+ } 
+ getData()
  },[url])
 
 return {data,loading,error}

@@ -103,7 +103,7 @@ export default function UserCard({filter}:SideBarFilter) {
 
   //pagination
   const length=filteredTask.length
-  const page=pagination(length,itemsPerPage,currentPage,filteredTask)
+  const page=pagination<AdminAssignTask | UsercompletedTask>({length,itemsPerPage,currentPage,filteredTask})
   const totalPages=Math.ceil(filteredTask.length/itemsPerPage)
   
   console.log(page) 
@@ -134,9 +134,11 @@ return (
 
 
 
-    {page.length>0 ?  page.map((task:AdminAssignTask) => (
+    {page.length>0 ?  page.map((task) => {
+        const isCOmpletedTask=isCOmpleted(task)
+      return(
       <div
-        key={task.uuid}
+        key={task.uuid} 
         className={`w-full max-w-xl rounded-2xl bg-white shadow-xl flex flex-col border border-gray-200 overflow-hidden ${page.length===1 && "max-w-2xl "}`}
       >
         {/* Header */}
@@ -171,7 +173,7 @@ return (
           </div>
           }
 
-          {isSolved && isCOmpleted(task) &&
+          {isSolved && isCOmpletedTask &&
             <>
               <div className="flex flex-col">
                 <label className="text-sm font-medium text-gray-500 mb-1">Submission</label>
@@ -204,7 +206,8 @@ return (
           
         </div>
       </div>
-    ))
+    )
+    })
     :
     <p>Task havent been completed yet pleaase complete a task </p> }
     

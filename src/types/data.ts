@@ -99,8 +99,16 @@ export type UpdateTaskProps={
   completedDate?: string;
 }
 
-export type PaginationProps={
+export type PaginationProps = {
+  currentPage: number;
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+  totalPages: number;
+};
+
+
+export type Paginationts<T>={
+  length:number,
+  itemsPerPage:number,
   currentPage:number,
-  setCurrentPage:React.Dispatch<React.SetStateAction<number>>
-  totalPages:number
+  filteredTask:T[] 
 }

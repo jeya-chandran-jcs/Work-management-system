@@ -51,11 +51,11 @@ const handleAssignTask=(user:UserProps)=>{
 const handleCloseModal=()=>{
     setSelectedUser(null)
 }
-
+  const filteredTask:UserProps[]=[...filterdUser]
   const length:number=filterdUser?.length
-  const page=pagination(length,itemsPerPage,currentPage,filterdUser)
+  const page=pagination({length,itemsPerPage,currentPage,filteredTask})
   const totalPages=Math.ceil(filterdUser.length/itemsPerPage)
-  console.log("total pages",totalPages)
+  console.log("total pages",page)
 
 return (
  <main className="w-full min-h-screen bg-gray-100 p-4">
