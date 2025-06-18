@@ -48,23 +48,6 @@ const  indexRouter=createRoute({
         }
     }
     })
-        
-    
-    // loader:()=>{
-    //     const id=sessionStorage.getItem("userID")
-    //     const user=sessionStorage.getItem("user")
-    //     if(user==="employee" && id)
-    //     {
-    //         throw redirect({to:`user-home/${id}`})
-    //     }
-    //     else 
-    //     {
-    //         throw redirect({
-    //         to:"/login"
-    //     })
-    //     }
-    // },
-
 
 const registerRoute=createRoute({
     path:"/register",
