@@ -1,0 +1,375 @@
+[
+  {
+    "name": "jegan",
+    "email": "jegan@gmail.com",
+    "password": "111111",
+    "role": "employee",
+    "department": "HR",
+    "getTask": [],
+    "completedTask": [
+      {
+        "UID": "EbUfDJ0jGxMAjfYAP2ayY8lItmA2",
+        "uuid": "4ec61abe-5424-4a8f-bb78-00de783aa2e4",
+        "name": {
+          "title": "Verify New Employee Documents",
+          "task": "All new employee documents have been reviewed and verified successfully."
+        },
+        "dueDate": "2025-06-20T00:00:00.000Z",
+        "completedDate": "2025-06-10T06:50:42.235Z"
+      },
+      {
+        "UID": "EbUfDJ0jGxMAjfYAP2ayY8lItmA2",
+        "uuid": "75317806-b96f-4331-9a64-27935f5d964d",
+        "name": {
+          "title": "Schedule Orientation ",
+          "task": "Orientation sessions have been scheduled for all new hires on Friday at 10 AM."
+        },
+        "dueDate": "2025-06-13T00:00:00.000Z",
+        "completedDate": "2025-06-14T06:50:59.067Z"
+      },
+      {
+        "UID": "EbUfDJ0jGxMAjfYAP2ayY8lItmA2",
+        "uuid": "3d904a36-3bca-4f2f-b3e7-585c946a0d6d",
+        "name": {
+          "title": "Update Employee Records",
+          "task": "Employee records have been updated in the HRMS database as of today."
+        },
+        "dueDate": "2025-06-14T00:00:00.000Z",
+        "completedDate": "2025-06-13T06:51:09.804Z"
+      },
+      {
+        "UID": "EbUfDJ0jGxMAjfYAP2ayY8lItmA2",
+        "uuid": "a747b08d-a32a-46bc-b8aa-ff989bb661d8",
+        "name": {
+          "title": "Post Job Openings",
+          "task": "Job listings have been posted on LinkedIn and Naukri. Applications are being monitored."
+        },
+        "dueDate": "2025-06-27T00:00:00.000Z",
+        "completedDate": "2025-06-12T06:51:25.619Z"
+      },
+      {
+        "UID": "EbUfDJ0jGxMAjfYAP2ayY8lItmA2",
+        "uuid": "20d237d2-9d5b-4e8a-9e01-4956348d4b25",
+        "name": {
+          "title": "Conduct Exit Interview",
+          "task": "Exit interview completed for the resigning employee. Report has been shared."
+        },
+        "dueDate": "2025-06-16T00:00:00.000Z",
+        "completedDate": "2025-06-12T06:51:42.987Z"
+      }
+    ],
+    "assignTask": [
+      {
+        "UID": "MbkVlooXfmVGvmtr61oYa2ruqdk2",
+        "uuid": "4ec61abe-5424-4a8f-bb78-00de783aa2e4",
+        "name": {
+          "title": "Verify New Employee Documents",
+          "task": "Review and validate the uploaded documents of the newly joined staff."
+        },
+        "dueDate": "2025-06-20T00:00:00.000Z",
+        "assignedDate": "2025-06-12T06:40:54.895Z"
+      },
+      {
+        "UID": "MbkVlooXfmVGvmtr61oYa2ruqdk2",
+        "uuid": "75317806-b96f-4331-9a64-27935f5d964d",
+        "name": {
+          "title": "Schedule Orientation ",
+          "task": "Set up onboarding sessions for this week’s new hires"
+        },
+        "dueDate": "2025-06-13T00:00:00.000Z",
+        "assignedDate": "2025-06-12T06:41:38.099Z"
+      },
+      {
+        "UID": "MbkVlooXfmVGvmtr61oYa2ruqdk2",
+        "uuid": "3d904a36-3bca-4f2f-b3e7-585c946a0d6d",
+        "name": {
+          "title": "Update Employee Records",
+          "task": "Ensure all employee data in the system is current and accurate."
+        },
+        "dueDate": "2025-06-14T00:00:00.000Z",
+        "assignedDate": "2025-06-12T06:42:03.834Z"
+      },
+      {
+        "UID": "MbkVlooXfmVGvmtr61oYa2ruqdk2",
+        "uuid": "a747b08d-a32a-46bc-b8aa-ff989bb661d8",
+        "name": {
+          "title": "Post Job Openings",
+          "task": "Publish job listings for open positions on LinkedIn and Naukri."
+        },
+        "dueDate": "2025-06-27T00:00:00.000Z",
+        "assignedDate": "2025-06-12T06:42:21.358Z"
+      },
+      {
+        "UID": "MbkVlooXfmVGvmtr61oYa2ruqdk2",
+        "uuid": "20d237d2-9d5b-4e8a-9e01-4956348d4b25",
+        "name": {
+          "title": "Conduct Exit Interview",
+          "task": " Schedule and complete exit interview for the resigning employee"
+        },
+        "dueDate": "2025-06-16T00:00:00.000Z",
+        "assignedDate": "2025-06-12T06:42:39.526Z"
+      },
+      {
+        "UID": "MbkVlooXfmVGvmtr61oYa2ruqdk2",
+        "uuid": "5663b133-e421-4bd3-96a5-eb043022ece1",
+        "name": {
+          "title": "Collect Feedback Forms",
+          "task": "Gather feedback forms from employees for this month."
+        },
+        "dueDate": "2025-06-18T00:00:00.000Z",
+        "assignedDate": "2025-06-12T06:42:57.263Z"
+      },
+      {
+        "UID": "MbkVlooXfmVGvmtr61oYa2ruqdk2",
+        "uuid": "def607aa-96a6-40e7-8fa2-5dd968ddab88",
+        "name": {
+          "title": "Track Leave Applications",
+          "task": "Review and respond to all pending leave requests"
+        },
+        "dueDate": "2025-06-19T00:00:00.000Z",
+        "assignedDate": "2025-06-12T06:43:15.047Z"
+      },
+      {
+        "UID": "MbkVlooXfmVGvmtr61oYa2ruqdk2",
+        "uuid": "7d073109-b30a-4a6b-82e0-2ded5e22d84b",
+        "name": {
+          "title": "Arrange Team Building Activity",
+          "task": "Plan a short virtual or in-office engagement activity."
+        },
+        "dueDate": "2025-06-13T00:00:00.000Z",
+        "assignedDate": "2025-06-12T06:43:32.977Z"
+      },
+      {
+        "UID": "MbkVlooXfmVGvmtr61oYa2ruqdk2",
+        "uuid": "5b47a1ef-5de7-4a56-9ee1-ba007a0b9034",
+        "name": {
+          "title": "Verify Attendance Sheet",
+          "task": "Cross-check last week’s attendance data for accuracy."
+        },
+        "dueDate": "2025-06-20T00:00:00.000Z",
+        "assignedDate": "2025-06-12T06:43:50.225Z"
+      },
+      {
+        "UID": "MbkVlooXfmVGvmtr61oYa2ruqdk2",
+        "uuid": "a3a407de-b9c6-4d4a-afd5-aa2301646229",
+        "name": {
+          "title": "Send HR Policy Reminder",
+          "task": "Share key HR policies with employees as a refresher via email."
+        },
+        "dueDate": "2025-06-17T00:00:00.000Z",
+        "assignedDate": "2025-06-12T06:44:12.635Z"
+      },
+      {
+        "UID": "MbkVlooXfmVGvmtr61oYa2ruqdk2",
+        "uuid": "6c1041de-1cca-4dcc-9ea6-ef248f130358",
+        "name": {
+          "title": "New Meeting",
+          "task": "Assign a head for all the team in a meeting"
+        },
+        "dueDate": "2025-06-20T00:00:00.000Z",
+        "assignedDate": "2025-06-12T06:52:50.655Z"
+      },
+      {
+        "UID": "MbkVlooXfmVGvmtr61oYa2ruqdk2",
+        "uuid": "222af9eb-dd90-447a-80f6-19aa80faf839",
+        "name": {
+          "title": "New Recruiment",
+          "task": "recruit tester "
+        },
+        "dueDate": "2025-06-19T00:00:00.000Z",
+        "assignedDate": "2025-06-16T12:31:16.357Z"
+      },
+      {
+        "UID": "MbkVlooXfmVGvmtr61oYa2ruqdk2",
+        "uuid": "1aa3c637-f346-475b-b33b-80161d672403",
+        "name": {
+          "title": "create a slideshow",
+          "task": "create a slide show to describe our new policy"
+        },
+        "dueDate": "2025-06-20T00:00:00.000Z",
+        "assignedDate": "2025-06-17T12:24:14.172Z"
+      }
+    ],
+    "getCompletedTask": [],
+    "image": "image 23",
+    "id": "11",
+    "UID": "EbUfDJ0jGxMAjfYAP2ayY8lItmA2",
+    "confirmPassword": "111111"
+  },
+  {
+    "name": "jeyachandran",
+    "email": "jeyachandranjcs@gmail.com",
+    "password": "111111",
+    "role": "admin",
+    "department": "Admin",
+    "getTask": [],
+    "completedTask": [],
+    "assignTask": [],
+    "getCompletedTask": [],
+    "image": "image 12",
+    "id": "12",
+    "UID": "MbkVlooXfmVGvmtr61oYa2ruqdk2",
+    "confirmPassword": "111111"
+  },
+  {
+    "name": "admin",
+    "email": "admin@gmail.com",
+    "password": "111111",
+    "role": "admin",
+    "department": "Admin",
+    "getTask": [],
+    "completedTask": [],
+    "assignTask": [],
+    "getCompletedTask": [],
+    "image": "image 13",
+    "id": "13",
+    "UID": "PLBVnEUNDRT1jTE6HEBL1X1fiBo2",
+    "confirmPassword": "111111"
+  },
+  {
+    "name": "Allwin",
+    "email": "allwin@gmail.com",
+    "password": "111111",
+    "role": "employee",
+    "department": "HR",
+    "getTask": [],
+    "completedTask": [],
+    "assignTask": [],
+    "getCompletedTask": [],
+    "image": "image 14",
+    "id": "14",
+    "UID": "fUU5BK2kRbh8zSC5fUf1ZCDJGOI2",
+    "confirmPassword": "111111"
+  },
+  {
+    "name": "Dinesh T",
+    "email": "dinesh@gmail.com",
+    "password": "111111",
+    "role": "employee",
+    "department": "Finance",
+    "getTask": [],
+    "completedTask": [],
+    "assignTask": [
+      {
+        "UID": "MbkVlooXfmVGvmtr61oYa2ruqdk2",
+        "uuid": "19276a6c-ca76-4303-9afb-2d1eb4f1f546",
+        "name": {
+          "title": "2025 tax list",
+          "task": "create a document for our company taxes in 2025"
+        },
+        "dueDate": "2025-06-13T00:00:00.000Z",
+        "assignedDate": "2025-06-12T07:07:32.772Z"
+      }
+    ],
+    "getCompletedTask": [],
+    "image": "image 15",
+    "id": "15",
+    "UID": "l6b7QdC2u8dC4ndyI0nPVZYyb202",
+    "confirmPassword": "111111"
+  },
+  {
+    "name": "Vijay SUryan",
+    "email": "vijay@gmail.com",
+    "password": "111111",
+    "role": "employee",
+    "department": "Developer",
+    "getTask": [],
+    "completedTask": [],
+    "assignTask": [],
+    "getCompletedTask": [],
+    "image": "image 16",
+    "id": "16",
+    "UID": "fQYaOxgKJdRotTdZSj15MXUvox92",
+    "confirmPassword": "111111"
+  },
+  {
+    "name": "John doe",
+    "email": "johndoe@gmail.com",
+    "password": "111111",
+    "role": "employee",
+    "department": "HR",
+    "getTask": [],
+    "completedTask": [],
+    "assignTask": [],
+    "getCompletedTask": [],
+    "image": "image 17",
+    "id": "17",
+    "UID": "HIH01deZWoSoGF9inbs7CAOH0Wf1",
+    "confirmPassword": "111111"
+  },
+  {
+    "name": "Charlie Davis",
+    "email": "charliedavis@example.com",
+    "password": "111111",
+    "role": "employee",
+    "department": "Finance",
+    "getTask": [],
+    "completedTask": [],
+    "assignTask": [],
+    "getCompletedTask": [],
+    "image": "image 18",
+    "id": "18",
+    "UID": "EjmYO4UCPwW5xFQ7iBlfkSXSjzw2",
+    "confirmPassword": "111111"
+  },
+  {
+    "name": "salmaan",
+    "email": "salmaan@gmail.com",
+    "password": "111111",
+    "role": "employee",
+    "department": "Developer",
+    "getTask": [],
+    "completedTask": [],
+    "assignTask": [],
+    "getCompletedTask": [],
+    "image": "image 19",
+    "id": "19",
+    "UID": "FgAkmMOE24Qe5tohDk7702rVIRi2",
+    "confirmPassword": "111111"
+  },
+  {
+    "name": "Vignesh",
+    "email": "Vignesh@gmail.com",
+    "password": "111111",
+    "role": "employee",
+    "department": "Developer",
+    "getTask": [],
+    "completedTask": [],
+    "assignTask": [],
+    "getCompletedTask": [],
+    "image": "image 20",
+    "id": "20",
+    "UID": "lXlwRfpZIAS3nRpn8YPqpJNs1Da2",
+    "confirmPassword": "111111"
+  },
+  {
+    "name": "Moorthy",
+    "email": "moorthy@gmail.com",
+    "password": "111111",
+    "role": "employee",
+    "department": "HR",
+    "getTask": [],
+    "completedTask": [],
+    "assignTask": [],
+    "getCompletedTask": [],
+    "image": "image 21",
+    "id": "21",
+    "UID": "ii4dxymmTrXLRPFLxmDH9kfnfcQ2",
+    "confirmPassword": "111111"
+  },
+  {
+    "name": "Bala",
+    "email": "bala@gmail.com",
+    "password": "111111",
+    "role": "employee",
+    "department": "Finance",
+    "getTask": [],
+    "completedTask": [],
+    "assignTask": [],
+    "getCompletedTask": [],
+    "image": "image 22",
+    "id": "22",
+    "UID": "s48lnYFyarTEE0x3RbdpJFZStZF2",
+    "confirmPassword": "111111"
+  }
+]

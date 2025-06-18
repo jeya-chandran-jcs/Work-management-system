@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import { auth } from '../../googleSignIn/config'
 import MenuDraw from '../miniComp/MenuDraw'
 import UserDraw from '../miniComp/UserDraw'

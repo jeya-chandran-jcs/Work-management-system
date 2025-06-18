@@ -5,15 +5,15 @@ import { useNavigate } from '@tanstack/react-router'
 import { useQuery } from '@tanstack/react-query'
 import { getData } from '../../Api/getData.ts'
 import { API } from '../../global.ts'
+import type { UserProps } from '../../types/data.ts'
 
 
-type Props={
-    email:string,
-    password:string
-}
+type LoginProps=Pick<UserProps, "email" | "password">
+
+
 
 export default function LoginForm() {
-    const [userData,setUserData]=useState<Props>({email:"",password:""})
+    const [userData,setUserData]=useState<LoginProps>({email:"",password:""})
     const [loginError,setLoginError]=useState<string>("")
     const [show,setShow]=useState<boolean>(false)
     const navigate=useNavigate()
@@ -23,6 +23,11 @@ export default function LoginForm() {
         queryFn:()=>getData(API)
     })
 
+    if(error)
+    {
+        console.log(error)
+    }
+
     const handleChange=(e:React.ChangeEvent<HTMLInputElement>)=>{
         const {name,value}=e.target
         setUserData((prev)=>({...prev,[name]:value}))
@@ -30,11 +35,12 @@ export default function LoginForm() {
 
     const handleSubmit=async(e:React.FormEvent)=>{
         e.preventDefault()
+     
         try{
             setShow(false)
             await signInWithEmailAndPassword(auth,userData.email,userData.password)
             
-            const filteredRole=data?.find((user)=>user.email===userData.email)
+            const filteredRole=data?.find((user:UserProps)=>user.email===userData.email)
             
             console.log("filteredRoel",filteredRole.role)
             sessionStorage.setItem("user",filteredRole.role)
@@ -56,18 +62,22 @@ export default function LoginForm() {
                 } 
             },500)
         }
-        catch(err:any)
+        catch(err)
         {
             setShow(true)
-             if(err.code==="auth/invalid-credential")
+
+            if(err instanceof Error && "code" in err && typeof err.code==="string")
             {
-                setLoginError("invalid email or password")
+                 if(err.code==="auth/invalid-credential")
+                    {
+                        setLoginError("invalid email or password")
+                    }
+                    else{
+                        setLoginError("something went wrong")
+                    }
+                    console.error(err.code)
             }
-            else{
-                setLoginError("something went wrong")
-            }
-            console.error(err)
-        }
+        }   
     }
     return(
         

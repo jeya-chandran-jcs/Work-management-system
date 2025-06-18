@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { API } from "../../global"
-import useFetch from "../../hooks/useFetch"
-import type { AdminFilterProps, User } from "../../types/data"
+import type { AdminFilterProps, User, UserProps } from "../../types/data"
 import Modal from "./Modal"
 import { useQuery } from "@tanstack/react-query"
 import { getData } from "../../Api/getData"
@@ -9,9 +8,9 @@ import { pagination } from "../../utility/pagination"
 import Pagination from "./Pagination"
 
 
-export default function Card({userFilter,setUserFilter}:AdminFilterProps) {
-    const [selectedUser,setSelectedUser]=useState<User | null>(null)
-    const {data,loading,error}=useQuery({
+export default function Card({userFilter}:Pick<AdminFilterProps, "userFilter">) {
+    const [selectedUser,setSelectedUser]=useState<UserProps | null>(null)
+    const {data,isLoading,error}=useQuery({
         queryKey:["allUsers"],
         queryFn:()=>getData(API)
     })
@@ -22,33 +21,38 @@ export default function Card({userFilter,setUserFilter}:AdminFilterProps) {
     {
         return
     }
-const filteredData=data.filter((item:User)=>item.role!=="admin")
+    if(isLoading) console.log(isLoading,"from admin")
+      if(error) console.log("from admin card" ,error)
 
-const filterdUser=filteredData.filter((user)=>{
-  const searchUser=userFilter.search?.toLowerCase() || ""
-   const matchedUser=user.name.toLowerCase().includes(searchUser) || user.email.toLowerCase().includes(searchUser)
+        
+  const filteredData=data.filter((item:User)=>item.role!=="admin")
 
-   const matchedDepartment=!userFilter.department || userFilter.department.toLowerCase()===user.department.toLowerCase()
+  const filterdUser=filteredData.filter((user:UserProps)=>{
+    const searchUser=userFilter.search?.toLowerCase() || ""
+    const matchedUser=user.name.toLowerCase().includes(searchUser) || user.email.toLowerCase().includes(searchUser)
 
-   const matchesStatus = userFilter.status === "" ? true : userFilter.status === "notAssigned"
-      ? user.assignTask.length === 0 : userFilter.status === "pending"
-      ? user.assignTask.length > 0 && user.completedTask.length === 0 : userFilter.status === "completed"
-      ? user.completedTask.length > 0 : false;
+    const matchedDepartment=!userFilter.department || userFilter.department.toLowerCase()===user.department.toLowerCase()
 
-   return matchedDepartment && matchedUser && matchesStatus
-})
+    const matchesStatus = userFilter.status === "" ? true : userFilter.status === "notAssigned"
+        ? user.assignTask.length === 0 : userFilter.status === "pending"
+        ? user.assignTask.length > 0 && user.completedTask.length === 0 : userFilter.status === "completed"
+        ? user.completedTask.length > 0 : false;
+
+    return matchedDepartment && matchedUser && matchesStatus
+  })
 
 
 
-const handleAssignTask=(user)=>{
+const handleAssignTask=(user:UserProps)=>{
     setSelectedUser(user)
+
 }
 
 const handleCloseModal=()=>{
     setSelectedUser(null)
 }
 
-  let length:number=filterdUser?.length
+  const length:number=filterdUser?.length
   const page=pagination(length,itemsPerPage,currentPage,filterdUser)
   const totalPages=Math.ceil(filterdUser.length/itemsPerPage)
   console.log("total pages",totalPages)
@@ -57,7 +61,7 @@ return (
  <main className="w-full min-h-screen bg-gray-100 p-4">
   <section className="w-full flex flex-wrap justify-between gap-y-6">
     {filterdUser.length > 0 ? (
-      page.map((user) => (
+      page.map((user:UserProps) => (
         <div
           key={user.id}
           className="w-[48%] bg-white rounded-2xl shadow-xl border border-gray-200 hover:shadow-2xl transition duration-300 p-6 flex flex-col justify-between"
@@ -122,7 +126,7 @@ return (
   </section>
    {selectedUser && 
            <div className="fixed inset-0 flex items-center justify-center bg-black/30 z-50"> 
-                 <Modal name={selectedUser.name} id={selectedUser.id} department={selectedUser.department} onClose={handleCloseModal} keyMessage={"assignTask"}/>
+                 <Modal name={selectedUser.name} id={String(selectedUser.id)} department={selectedUser.department} onClose={handleCloseModal} keyMessage={"assignTask"}/>
            </div>
         }
 
@@ -140,5 +144,5 @@ return (
 </main>
 
 );
-
+ 
 }

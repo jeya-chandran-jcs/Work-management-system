@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import type { SideBarProps } from '../../types/data'
 
 export default function SideBar({setFilter,filter}:SideBarProps) {

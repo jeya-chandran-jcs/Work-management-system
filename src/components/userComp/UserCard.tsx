@@ -2,16 +2,15 @@ import { useParams } from '@tanstack/react-router'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchUser } from '../../redux/userSlice'
 import { useEffect, useState } from 'react'
-import {  type User } from 'firebase/auth'
 import type { AppDispatch } from '../../store/store'
-import type { RootState } from '@reduxjs/toolkit/query'
-import type { SideBarFilter } from '../../types/data'
+import type { RootState } from '../../store/store'
+import type { AdminAssignTask, SideBarFilter, UsercompletedTask, UserProps } from '../../types/data'
 import Modal from '../miniComp/Modal'
 import { pagination } from '../../utility/pagination'
 import Pagination from '../miniComp/Pagination'
 
 export default function UserCard({filter}:SideBarFilter) {
-  const [selectedUser,setSelectedUser]=useState<User | null>(null)
+  const [selectedUser,setSelectedUser]=useState<UsercompletedTask | AdminAssignTask | null>(null)
   const [currentPage,setCurrentPage]=useState<number>(1)
   const itemsPerPage:number=4
 
@@ -29,7 +28,7 @@ export default function UserCard({filter}:SideBarFilter) {
 
   useEffect(()=>{
     dispatch(fetchUser())
-  },[filter])
+  },[filter.date,filter.type])
 
   // states
   if (loading) return <p>Loading user data...</p>;
@@ -41,34 +40,47 @@ export default function UserCard({filter}:SideBarFilter) {
 
 
   // user and admin data
-  const user=reduxData.find((singleUser)=>singleUser.id===userId)
+  const user=reduxData.find((singleUser:UserProps)=>singleUser.id===userId)
   const adminUid = user?.assignTask?.[0]?.UID;
-  const admin=reduxData.find((singleAdmin)=>singleAdmin.UID===adminUid)
+  const admin=reduxData.find((singleAdmin:UserProps)=>singleAdmin.UID===adminUid)
   
- 
+
 
   //function for task filter
   const getFilteredTask=()=>{
- let taskList = isSolved
-    ? user.completedTask || []
-    : user.assignTask.filter((task) =>
-        user.completedTask.every((done) => done.uuid !== task.uuid)
-      );
+       if(!user) return "user not found"
 
-  if (filter.date?.trim()) {
-    const filterDate = new Date(filter.date);
+        let taskList = isSolved ? user.completedTask || []
+        : 
+        user.assignTask.filter((task:AdminAssignTask) => user.completedTask.every((done:UsercompletedTask) => done.uuid !== task.uuid));
 
-    taskList = taskList.filter((task) => {
-      const dateToCompare = isSolved
-        ? user.completedTask.find((done) => done.uuid === task.uuid)?.completedDate
-        : task.dueDate;
+        if (filter.date?.trim()) {
+          const filterDate = new Date(filter.date);
 
-      return dateToCompare
-        ? isSolved
-          ? new Date(dateToCompare) < filterDate
-          : new Date(dateToCompare) > filterDate
-        : false;
-    });
+          if(isSolved) 
+          {
+            taskList=(taskList as UsercompletedTask[]).filter((task)=>{
+              const dateToCompare=task.completedDate
+              return new Date(dateToCompare) >= filterDate
+            })
+          }
+          else 
+          {
+            taskList =(taskList as AdminAssignTask[]).filter((task)=>{
+              const dateToCompare=task.dueDate
+              return new Date(dateToCompare) >= filterDate
+            })
+          }
+    //       taskList = taskList.filter((task) => {
+    //       const dateToCompare = isSolved
+    //       ? user.completedTask.find((done:UsercompletedTask) => done.uuid === task.uuid)?.completedDate
+    //       : task.dueDate;
+
+    //       return dateToCompare ? isSolved
+    //         ? new Date(dateToCompare) < filterDate
+    //         : new Date(dateToCompare) > filterDate
+    //       : false;
+    // });
   }
   if (taskList.length === 0) {
     return isSolved
@@ -90,35 +102,39 @@ export default function UserCard({filter}:SideBarFilter) {
 }
 
   //pagination
-  let length=filteredTask.length
+  const length=filteredTask.length
   const page=pagination(length,itemsPerPage,currentPage,filteredTask)
   const totalPages=Math.ceil(filteredTask.length/itemsPerPage)
   
   console.log(page) 
  
  //mini-func for assign and date format
-  const handleAssignTask=(user)=>{
-    setSelectedUser(user)
+  const handleAssignTask=(task:AdminAssignTask | UsercompletedTask)=>{
+    setSelectedUser(task)
   }
 const handleCloseModal=()=>{
     setSelectedUser(null)
   }
-const handleSortedDate=(date)=>{
+
+const handleSortedDate=(date:string)=>{
   if(date)
   {
-    const [sortedDate,time]=date.split("T")
+    const [sortedDate]=date.split("T")
   return sortedDate
   }
 } 
 
+function isCOmpleted(task:unknown): task is UsercompletedTask{
+  return (task as UsercompletedTask).completedDate !== undefined
+}
 
 //tsx
 return (
- <div className={`w-3/4 min-h-screen overflow-y-auto flex flex-wrap  items-center justify-center gap-6 py-10 px-4 shadow shadow-gray-200 ${page.length===1 && "flex-col"}`}>
+ <div className={`w-3/4 min-h-screen bg-gray-50 overflow-y-auto flex flex-wrap  items-center justify-center gap-6 py-10 px-4 shadow shadow-gray-200 ${page.length===1 && "flex-col"}`}>
 
 
 
-    {page.length>0 ?  page.map((task) => (
+    {page.length>0 ?  page.map((task:AdminAssignTask) => (
       <div
         key={task.uuid}
         className={`w-full max-w-xl rounded-2xl bg-white shadow-xl flex flex-col border border-gray-200 overflow-hidden ${page.length===1 && "max-w-2xl "}`}
@@ -126,7 +142,7 @@ return (
         {/* Header */}
         <div className="flex justify-between items-center px-6 py-4 bg-green-100 border-b border-gray-300">
           <p className="text-gray-700 font-semibold">Assigned By:</p>
-          <p className="text-green-600 font-bold text-lg">{admin.name}</p>
+          <p className="text-green-600 font-bold text-lg">{admin?.name}</p>
         </div>
 
         {/* Task Details */}
@@ -155,7 +171,7 @@ return (
           </div>
           }
 
-          {isSolved &&
+          {isSolved && isCOmpleted(task) &&
             <>
               <div className="flex flex-col">
                 <label className="text-sm font-medium text-gray-500 mb-1">Submission</label>
@@ -191,11 +207,14 @@ return (
     ))
     :
     <p>Task havent been completed yet pleaase complete a task </p> }
-    {selectedUser && 
+    
+    {selectedUser && user?.id && user?.department &&
+          (  
                <div className="fixed inset-0 flex items-center justify-center bg-black/30 z-50"> 
-                     <Modal id={user.id}  department={user.department} title={selectedUser?.name?.title} userDueDate={selectedUser.dueDate} Uid={selectedUser.uuid}  onClose={handleCloseModal} keyMessage={"completedTask"}/>
+                     <Modal id={String(user?.id)}  department={user?.department } title={selectedUser?.name?.title} userDueDate={selectedUser.dueDate} Uid={selectedUser.uuid}  onClose={handleCloseModal} keyMessage={"completedTask"}/>
                </div>
-            }
+          )
+    }
       <Pagination setCurrentPage={setCurrentPage} currentPage={currentPage} totalPages={totalPages}/>
   </div>
 );

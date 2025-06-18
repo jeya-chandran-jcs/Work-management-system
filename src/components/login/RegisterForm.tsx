@@ -1,29 +1,30 @@
 import React, { useRef, useState } from 'react'
 import { auth } from "../../googleSignIn/config.ts"
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
-
+import type { UserProps } from '../../types/data.ts'
 import { FirebaseError } from 'firebase/app'
 import { API } from '../../global.ts'
-import type { User } from '../../types/data.ts'
 import { useMutation } from '@tanstack/react-query'
 import { postData } from '../../Api/postData.ts'
 import { useNavigate } from '@tanstack/react-router'
 
 
+type RegisterUserProps=Pick<UserProps,"UID" | "name" | "email" | "password" | "confirmPassword" | "role" | "department">
+
 
 export default function RegisterForm() {
-    const [data, setData] = useState<Partial<User>>({ UID:"",name: "", email: "", password: "", confirmPassword: "", role: "employee", department: "" })
+    const [data, setData] = useState<RegisterUserProps>({ UID:"",name: "", email: "", password: "", confirmPassword: "", role: "employee", department: "" })
     const [error, setError] = useState<string | null>(null)
     const [show, setSHow] = useState<boolean | null>(null)
     const adminRef=useRef<HTMLSelectElement | null>(null)
     const navigate = useNavigate()
    
     const mutation =useMutation({
-        mutationFn:(newUserData:Partial<User>)=>postData({url:API,data:newUserData}),
+        mutationFn:(newUserData:RegisterUserProps)=>postData({url:API,data:newUserData}),
         onSuccess:()=>navigate({to:"/login"}),
         onError:(err)=>{
             console.error(err)
-            setError(err)
+            setError(err.message)
         }
     })
 

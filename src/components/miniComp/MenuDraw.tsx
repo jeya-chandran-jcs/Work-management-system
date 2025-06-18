@@ -1,4 +1,3 @@
-import React from 'react'
 import "../../styles/MenuDraw.css"
 
 export default function MenuDraw() {

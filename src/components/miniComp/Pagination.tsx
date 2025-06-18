@@ -1,6 +1,7 @@
+import type { PaginationProps } from "../../types/data"
 
 
-export default function Pagination({currentPage,setCurrentPage,totalPages}) {
+export default function Pagination({currentPage,setCurrentPage,totalPages}:PaginationProps) {
  
     const handleNext=()=>{
         if(currentPage <totalPages){

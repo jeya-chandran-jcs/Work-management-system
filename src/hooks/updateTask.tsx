@@ -1,10 +1,11 @@
 
 import { API } from "../global"
 import { auth } from "../googleSignIn/config"
+import type { UpdateTaskProps } from "../types/data"
 
 
 // export default async function updateTask({id,uuid,title,description,assignedDate,dueDate,completedDate,keyMessage} :{id:string,uuid:string,title:string,description:string,assignedDate:string,dueDate:string,completedDate:string,date:string,keyMessage:string}) {
-export default async function updateTask(payLoad :{id:string,uuid:string,title:string,description:string,assignedDate:string,dueDate:string,completedDate:string,date:string,keyMessage:string}) {
+export default async function updateTask(payLoad :UpdateTaskProps) {
     
     const {id,uuid,keyMessage}=payLoad
     const UniqueId=auth.currentUser?.uid
