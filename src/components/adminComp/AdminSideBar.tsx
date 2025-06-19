@@ -1,4 +1,5 @@
 import type {  AdminFilterProps } from "../../types/data"
+import Button from "../base/Button"
 
 
 export default function AdminSideBar({userFilter,setUserFilter}:AdminFilterProps) {
@@ -45,7 +46,8 @@ export default function AdminSideBar({userFilter,setUserFilter}:AdminFilterProps
                         ))}
                     </select>
 
-                    <button className="w-full border border-gray-200 text-lg text-gray-500 font-bold rounded-md shadow-md py-2 hover:bg-gray-500 hover:text-white" onClick={()=>setUserFilter({search:"",status:"",department:""})}>Clear</button>
+                    <Button style={"w-full border border-gray-200 text-lg text-gray-500 font-bold rounded-md shadow-md py-2 hover:bg-gray-500 hover:text-white"} 
+                    handleSubmit={()=>setUserFilter({search:"",status:"",department:""})} type={"reset"} text={"Clear"}/>
             </div>
 
         </div>

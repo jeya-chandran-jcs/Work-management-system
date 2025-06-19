@@ -8,6 +8,7 @@ import type { AdminAssignTask, SideBarFilter, UsercompletedTask, UserProps } fro
 import Modal from '../miniComp/Modal'
 import { pagination } from '../../utility/pagination'
 import Pagination from '../miniComp/Pagination'
+import Button from '../base/Button'
 
 export default function UserCard({filter}:SideBarFilter) {
   const [selectedUser,setSelectedUser]=useState<UsercompletedTask | AdminAssignTask | null>(null)
@@ -71,16 +72,6 @@ export default function UserCard({filter}:SideBarFilter) {
               return new Date(dateToCompare) >= filterDate
             })
           }
-    //       taskList = taskList.filter((task) => {
-    //       const dateToCompare = isSolved
-    //       ? user.completedTask.find((done:UsercompletedTask) => done.uuid === task.uuid)?.completedDate
-    //       : task.dueDate;
-
-    //       return dateToCompare ? isSolved
-    //         ? new Date(dateToCompare) < filterDate
-    //         : new Date(dateToCompare) > filterDate
-    //       : false;
-    // });
   }
   if (taskList.length === 0) {
     return isSolved
@@ -200,9 +191,8 @@ return (
           >
             {isSolved ? "Solved" : "Pending"}
           </span>
-          <button className={` text-white px-5 py-2 rounded-md  transition duration-200 ${isSolved ? "bg-gray-500 cursor-not-allowed" : "bg-indigo-500 hover:bg-indigo-600"}`} disabled={isSolved} onClick={()=>handleAssignTask(task)}>
-            {isSolved ? "Completed" : "Submit"}
-          </button>
+          <Button style={` text-white px-5 py-2 rounded-md  transition duration-200 ${isSolved ? "bg-gray-500 cursor-not-allowed" : "bg-indigo-500 hover:bg-indigo-600"}`}
+          handleSubmit={()=>handleAssignTask(task)} text={isSolved ? "Completed" : "Submit"} type={"submit"} disabled={isSolved}/>
           
         </div>
       </div>

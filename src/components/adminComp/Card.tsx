@@ -1,11 +1,12 @@
 import { useState } from "react"
 import { API } from "../../global"
 import type { AdminFilterProps, User, UserProps } from "../../types/data"
-import Modal from "./Modal"
+import Modal from "../miniComp/Modal"
 import { useQuery } from "@tanstack/react-query"
 import { getData } from "../../Api/getData"
 import { pagination } from "../../utility/pagination"
-import Pagination from "./Pagination"
+import Pagination from "../miniComp/Pagination"
+import Button from "../base/Button"
 
 
 export default function Card({userFilter}:Pick<AdminFilterProps, "userFilter">) {
@@ -111,12 +112,8 @@ return (
                   : "Pending"}
               </span>
             </p>
-            <button
-              className="bg-green-500 text-white px-5 py-2 rounded-md hover:bg-green-600 transition duration-200"
-              onClick={() => handleAssignTask(user)}
-            >
-              Assign
-            </button>
+           
+          <Button text={"Assign"} style={"bg-green-500 text-white px-5 py-2 rounded-md hover:bg-green-600 transition duration-200"} type={"submit"}  handleSubmit={()=>handleAssignTask(user)}/>
           </div>
         </div>
       ))

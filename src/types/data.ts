@@ -112,3 +112,34 @@ export type Paginationts<T>={
   currentPage:number,
   filteredTask:T[] 
 }
+
+export type ButtonProps={
+  type:"submit" | "reset" | "button",
+  style:string,
+  handleSubmit?:React.MouseEventHandler<HTMLButtonElement>,
+  text:React.ReactNode,
+  disabled?:boolean
+}
+
+export type InputProps={
+  name:string,
+  value?:string | undefined,
+  placeHolder?:string,
+  id:string,
+  handleChange?:(e:React.ChangeEvent<HTMLInputElement>)=>void,
+  readOnly?:boolean,
+  style:string,
+  type?:string,
+  checked?:boolean,
+  required?:boolean,
+  disabled?:boolean
+}
+
+export type ErrorModalProps = {
+  message: string;
+  visible: boolean;
+  onClose: () => void;
+};
+
+
+export type RegisterUserProps = Pick<UserProps, "UID" | "name" | "email" | "password" | "confirmPassword" | "role" | "department">

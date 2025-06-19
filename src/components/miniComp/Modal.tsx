@@ -7,6 +7,8 @@ import { ModalHelper } from "../../utility/modal"
 import { useDispatch } from "react-redux"
 import { fetchUser } from "../../redux/userSlice"
 import type { AppDispatch } from "../../store/store";
+import Button from "../base/Button";
+import Input from "../base/Input";
 
 
 type ModalProps = {
@@ -119,36 +121,35 @@ export default function Modal({name,id,department,onClose,keyMessage,userDueDate
             
             <div className='w-full flex justify-between items-center bg-green-300 border-b border-gray-300'>
                 <p className='text-green-900 font-semibold text-md ml-3'>{department}</p>
-                <button className='text-black font-bold text-md p-1 px-3 hover:bg-white hover:text-green-800  rounded' onClick={onClose}>X</button>
+                <Button style={"text-black font-bold text-md p-1 px-3 hover:bg-white hover:text-green-800  rounded"} handleSubmit={onClose} text={"X"} type={"button"}/>
             </div>
 
             <form className='w-full flex flex-col p-3 gap-3'>
     
                 <label className='font-semibold text-gray-700' htmlFor='task'>{keyMessage ==="assignTask" ? "Assign a Task:" : "Complete Task"} {keyMessage==="assignTask" && `${name}`}</label>
-    
-                <input
-                    placeholder='Title'
-                    name="title"
-                    value={keyMessage === "completedTask" ? title : postData.title ?? ""}
-                    onChange={handleChange}
-                    readOnly={keyMessage === "completedTask"}
-                    id='title'
-                    className='w-full rounded-md border border-gray-600 text-gray-800 font-semibold text-md px-4 py-2 hover:border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:bg-blue-50/65'
-                 />
+
+                <Input placeHolder={"Title"} name={"title"} value={keyMessage === "completedTask" ? title : postData.title ?? ""}
+                handleChange={handleChange} readOnly={keyMessage === "completedTask"} id={"title"} 
+                style={'w-full rounded-md border border-gray-600 text-gray-800 font-semibold text-md px-4 py-2 hover:border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:bg-blue-50/65'}/>
+               
                 <textarea placeholder='Type your task here...' name="description" value={postData.description ?? ""} onChange={handleChange} id='task'  rows={4} className='w-full  rounded-md border border-gray-600 text-gray-800 font-semibold text-md px-4 py-2 hover:border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:bg-blue-50/65'/>
                 <div className="w-full flex justify-between items-center my-2 gap-2">
                     <label className="w/3/4">Due Date:</label>
                     {keyMessage==="completedTask" ? 
                     <p className="text-center text-gray-600 font-semibold text-md pr-3 py-2">{userDueDate ? handleUserDueDate(userDueDate) : "N/A"}</p>
                     :
-                    <input onChange={handleChange} value={postData.dueDate ?? ""} name="dueDate" className="text-center text-gray-600 font-semibold text-md rounded-lg border border-gray-500 shadow-md focus:outline-none focus:ring-1 focus:ring-blue-400 pr-3 py-2 " type="date"/>
+                    <Input id={"date"} handleChange={handleChange} value={postData.dueDate ?? ""} name={"dueDate"} style={"text-center text-gray-600 font-semibold text-md rounded-lg border border-gray-500 shadow-md focus:outline-none focus:ring-1 focus:ring-blue-400 pr-3 py-2 "} type={"date"}/>
+              
                     }
                 </div>
             </form>
             
             <div className='w-full flex justify-between items-center p-2 bg-gray-50 '>
-                <button className=' font-bold text-md text-gray-700 border-2 bg-white border-gray-400 hover:bg-gray-700 hover:border-white hover:text-white px-3 py-1 rounded-md' onClick={onClose}>Close</button>
-                <button className="font-bold text-md text-white px-3 py-1 rounded-md  transition duration-200 bg-indigo-500 hover:bg-indigo-600" onClick={handleAssign}>Assign</button>
+                <Button style={' font-bold text-md text-gray-700 border-2 bg-white border-gray-400 hover:bg-gray-700 hover:border-white hover:text-white px-3 py-1 rounded-md'} 
+                handleSubmit={onClose} text={"Close"} type={"button"}/>
+
+                <Button style={'font-bold text-md text-white px-3 py-1 rounded-md  transition duration-200 bg-indigo-500 hover:bg-indigo-600'} 
+                handleSubmit={handleAssign} text={"Assign"} type={"submit"}/>
             </div>
         </div>
     </div>

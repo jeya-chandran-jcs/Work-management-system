@@ -3,6 +3,7 @@ import "../../styles/MenuDraw.css"
 import { auth } from '../../googleSignIn/config'
 import { onAuthStateChanged,signOut } from 'firebase/auth'
 import { useNavigate } from '@tanstack/react-router'
+import Button from '../base/Button'
 
 export default function UserDraw() {
 
@@ -61,13 +62,11 @@ useEffect(()=>{
                 </li> 
                 <li className='text-white'>
                     {name ? (
-                        <button onClick={handleLogout} className="w-full px-3 rounded font-bold text-lg bg-red-500 text-white ">
-                            Logout
-                        </button>
+                        <Button handleSubmit={handleLogout} style={"w-full px-3 rounded font-bold text-lg bg-red-500 text-white "}
+                        text={"LogOut"} type={"submit"}/>
                         ) : (
-                        <button onClick={handleLogin} className="w-full px-3 rounded font-bold text-lg bg-green-500 text-black">
-                            Login
-                        </button>
+                        <Button handleSubmit={handleLogin} style={"w-full px-3 rounded font-bold text-lg bg-green-500 text-black"}
+                        text={"Login"} type={"submit"}/>
                         )}                   
                 </li>
 

@@ -3,6 +3,7 @@ import { auth } from '../../googleSignIn/config'
 import MenuDraw from '../miniComp/MenuDraw'
 import UserDraw from '../miniComp/UserDraw'
 import { onAuthStateChanged } from 'firebase/auth'
+import Button from './Button'
 
 export default function NavBar() {
     const [menuShow,setMenuShow]=useState<boolean>(false)
@@ -18,13 +19,10 @@ export default function NavBar() {
         return ()=>first()
     })
   return (
-    <nav className='w-full flex justify-around items-center py-3  bg-green-300 top-0 ' onMouseLeave={()=>setUserShow(false)}>
+    <nav className='w-full flex justify-around items-center py-3  bg-white backdrop-blur-md top-0 shadow-md z-50' onMouseLeave={()=>setUserShow(false)}>
         <div className='flex items-center justify-center gap-2 w-full relative '>
-            
-            <button onClick={()=>setMenuShow(!menuShow)} className='relative'>
-                <i className="fa-solid fa-bars-staggered  font-extrabold text-2xl "></i> 
-                
-            </button>
+ 
+            <Button handleSubmit={()=>setMenuShow(!menuShow)} style={"relative"} type='button' text={<i className="fa-solid fa-bars-staggered  font-extrabold text-2xl "></i>}/>
              {
                  menuShow && <div className='absolute w-full top-11 left-24 '><MenuDraw /></div> 
              }

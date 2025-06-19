@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import UserCard from '../components/userComp/UserCard'
-import SideBar from '../components/miniComp/SideBar'
+import SideBar from '../components/userComp/SideBar'
 import type {  SideBarType} from '../types/data'
 
 export default function UserHome() {

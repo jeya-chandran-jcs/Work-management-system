@@ -1,4 +1,6 @@
 import type { SideBarProps } from '../../types/data'
+import Button from '../base/Button'
+import Input from '../base/Input'
 
 export default function SideBar({setFilter,filter}:SideBarProps) {
  
@@ -21,39 +23,21 @@ export default function SideBar({setFilter,filter}:SideBarProps) {
             <div className='h-[1px] my-2 w-full bg-blue-500 rounded-lg'></div>
             </div>
           <label className='font-medium text-lg font-serif flex items-center gap-2'>
-            <input
-              type='radio'
-              name='type'
-              value='solved'
-              checked={filter.type === 'solved'}
-              className='accent-green-600'
-              onChange={handleChange}
-            />
+            <Input id="solved" type={"radio"} name={"type"} value={"solved"} checked={filter.type==="solved"} style={"accent-green-600"} handleChange={handleChange}/>
             Solved
           </label>
           <label className='font-medium text-lg font-serif flex items-center gap-2'>
-            <input
-              type='radio'
-              name='type'
-              value='unSolved'
-              checked={filter.type === 'unSolved'}
-              className='accent-red-500'
-              onChange={handleChange}
-            />
+             <Input id="unSolved" type={"radio"} name={"type"} value={"unSolved"} checked={filter.type==="unSolved"} style={"accent-red-600"} handleChange={handleChange}/>
             UnSolved
           </label>
         </div>
 
         
-        <input
-          type='date'
-          name='date'
-          className='w-full text-center focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-md shadow-md p-2 border border-gray-400'
-          onChange={handleChange}
-        />
+        <Input type={"date"} id={"date"} name={"date"} style={'w-full text-center focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-md shadow-md p-2 border border-gray-400'}
+        handleChange={handleChange}/>
 
-        
-        <button className='w-full border border-gray-300 text-md font-semibold py-2 text-center hover:bg-gray-500 hover:text-white rounded-md shadow-md' onClick={() => setFilter({ type: 'unSolved', date: null }) }>Clear</button>
+        <Button style={'w-full border border-gray-300 text-md font-semibold py-2 text-center hover:bg-gray-500 hover:text-white rounded-md shadow-md'}
+        handleSubmit={() => setFilter({ type: 'unSolved', date: null })} text={"Clear"} type={"submit"}/>
       </div>
     </section>
     )
