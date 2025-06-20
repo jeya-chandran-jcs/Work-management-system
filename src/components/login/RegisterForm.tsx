@@ -96,8 +96,8 @@ export default function RegisterForm() {
 
                 <h1 className='text-2xl font-extrabold text-gray-700 ' style={{ fontFamily: "cursive" }}>Already an employee then</h1>
                 <h1 className='text-2xl font-extrabold text-gray-700 ' style={{ fontFamily: "cursive" }}>Lets Get to Work! 💼</h1>
-                <p className='w-3/4 text-center font-extrabold text-xl text-green-800 font-serif'>  Access your tasks, stay updated,</p>
-                <p className='text-green-800 font-bold text-lg font-serif'>and collaborate with your team in real time!</p>
+                <p className='w-3/4 text-start text-wrap mx-auto font-extrabold text-xl text-green-800 font-serif'>  Access your tasks, stay updated, and collaborate with your team in real time!</p>
+                {/* <p className='text-green-800 font-bold text-lg font-serif'></p> */}
                 <a href='/login' className='font-bold text-3xl text-green-700 text-center mt-2 underline' style={{ fontFamily: "cursive" }}>Login 📝</a>
             </div>
 

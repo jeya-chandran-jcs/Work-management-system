@@ -107,10 +107,10 @@ export default function LoginForm() {
                          </div>
 
                         <div className='flex flex-col gap-4 w-full '>
-                             <Input type={"email"} name={"email"} placeHolder={"Enter Your Email here..."} value={userData.email} style={'w-full h-11 px-4 py-2 bg-green-50 rounded-xl border border-gray-400 text-lg font-medium text-gray-600 focus:outline-none focus:bg-white focus:ring-2 focus:ring-green-300 focus:border-none'}
+                             <Input type={"email"} name={"email"} placeHolder={"Enter Your Email here..."} value={userData.email} style={'w-full  h-11 px-4 py-2 bg-white rounded-xl border border-gray-400 text-lg font-medium text-gray-600 focus:outline-none focus:bg-green-50 focus:ring-2 focus:ring-green-300 focus:border-none'}
                              handleChange={handleChange} id={"email"}/>
 
-                            <Input type={"password"} name={"password"} placeHolder={"password"} value={userData.password} style={'w-full h-11 px-4 py-2 rounded-xl border bg-green-50 border-gray-400 text-lg font-medium text-gray-600 focus:outline-none focus:bg-white focus:ring-2 focus:ring-green-300 focus:border-none'}
+                            <Input type={"password"} name={"password"} placeHolder={"password"} value={userData.password} style={'w-full  h-11 px-4 py-2 bg-white rounded-xl border border-gray-400 text-lg font-medium text-gray-600 focus:outline-none focus:bg-green-50 focus:ring-2 focus:ring-green-300 focus:border-none'}
                             handleChange={handleChange} id={"password"}/>
                         </div>
 

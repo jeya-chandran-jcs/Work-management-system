@@ -6,7 +6,7 @@ li{
 li::after{
     content: "";
     position: absolute;
-    background: white;
+    background: black;
     bottom: -5px;
     height: 2px;
     /* top:-5px; */

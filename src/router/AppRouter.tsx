@@ -66,6 +66,16 @@ const adminHome=createRoute({
     
 })
 
+const adminTable=createRoute({
+    path:"/admin-table",
+    getParentRoute:()=>rootRoute,
+    beforeLoad:()=>{
+        const role=sessionStorage.getItem("user") || null
+        if(role!=="admin") throw redirect({to:"/login"})
+    },
+component:lazyRouteComponent(()=>import("../pages/AdminTable"))
+})
+
 const userHome=createRoute({
     path:"/user-home/$id",
     getParentRoute:()=>rootRoute,
@@ -81,6 +91,7 @@ const routeTree=rootRoute.addChildren([
     loginRoute,
     registerRoute,
     adminHome,
+    adminTable,
     userHome
 ])
 

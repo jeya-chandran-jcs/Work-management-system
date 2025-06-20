@@ -143,3 +143,11 @@ export type ErrorModalProps = {
 
 
 export type RegisterUserProps = Pick<UserProps, "UID" | "name" | "email" | "password" | "confirmPassword" | "role" | "department">
+
+export type ColumnProps=Pick<UserProps,"id"|"name" | "email"| "department"| "role"| "completedTask" | "assignTask">
+
+export type TableProps={
+  employee:ColumnProps[],
+  isLoading:boolean,
+  error:unknown
+}

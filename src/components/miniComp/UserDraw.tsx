@@ -7,9 +7,7 @@ import Button from '../base/Button'
 
 export default function UserDraw() {
 
-    // const user=auth.currentUser
-    // const name=user?.displayName
-    // const email=user?.email
+ 
     const [name,setName]=useState<string | null>(null)
     const [email,setEmail]=useState<string | null>(null)
     const navigate=useNavigate()
@@ -52,15 +50,15 @@ useEffect(()=>{
 },[])
     
   return (
-    <div className=' w-2/4  bg-black border-2 border-white shadow shadow-gray-400 rounded-md '>
+    <div className=' w-2/4 bg-white  border-2 border-gray-400 shadow-lg shadow-gray-400 rounded-md '>
            <ul className='flex w-full flex-col  justify-start px-3 py-2 gap-3'>
-                <li className='text-white'>
+                <li className='text-black'>
                     {name && <p>Name:  {name}</p>}
                 </li>
-                <li className='text-white'>
+                <li className='text-black'>
                     {email && <p>Email: {email}</p>}
                 </li> 
-                <li className='text-white'>
+                <li className='text-black'>
                     {name ? (
                         <Button handleSubmit={handleLogout} style={"w-full px-3 rounded font-bold text-lg bg-red-500 text-white "}
                         text={"LogOut"} type={"submit"}/>
