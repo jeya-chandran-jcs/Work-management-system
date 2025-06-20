@@ -18,10 +18,10 @@ export default function NavBar() {
         return ()=>first()
     })
     const admin=sessionStorage?.getItem("user")
-
+    const id=sessionStorage.getItem("userID")
     const handleNavigate=()=>{
         if(admin==="admin")  navigate({to:"/admin-home"})
-        else if(admin==="employee")  navigate({to:"/user-home"})
+        else if(admin==="employee")  navigate({to:`/user-home/${id}`})
     }
 
   return (
